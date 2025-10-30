@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional IT Services Design System */
+
+@layer base {
+  :root {
+    /* Clean light theme derived from the new logo */
+    /* Core surface and text */
+    --background: 0 0% 100%;            /* white */
+    --foreground: 215 35% 18%;          /* deep navy text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 35% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 35% 18%;
+
+    /* Brand colors: deep navy and light aqua */
+    --primary: 215 65% 22%;             /* deep navy */
+    --primary-foreground: 0 0% 100%;    /* on-primary */
+    --primary-light: 215 45% 30%;       /* slightly lighter navy */
+    --primary-lighter: 215 30% 40%;
+
+    --secondary: 187 65% 54%;           /* aqua */
+    --secondary-foreground: 215 65% 18%;
+    --secondary-blue: 187 65% 54%;      /* keep token for components */
+    --secondary-blue-light: 187 55% 90%;
+
+    /* Neutral grays for UI */
+    --muted: 210 16% 96%;
+    --muted-foreground: 215 15% 35%;
+    --muted-dark: 215 12% 85%;
+
+    /* Subtle accents in the same family (no neon) */
+    --accent: 187 25% 92%;
+    --accent-foreground: 215 35% 18%;
+    --accent-blue: 187 65% 54%;
+    --accent-purple: 215 20% 35%;
+    --accent-pink: 187 20% 35%;
+    --accent-success: 158 38% 40%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 16% 90%;
+    --input: 210 16% 90%;
+    --ring: 187 65% 54%;
+
+    --radius: 0.75rem;
+
+    /* Subtle, professional gradients (very light) */
+    --gradient-primary: linear-gradient(135deg, hsl(215 65% 22%) 0%, hsl(187 65% 54%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(215 30% 98%) 0%, hsl(187 55% 95%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 16% 97%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(215 65% 22%) 0%, hsl(187 65% 54%) 100%);
+
+    /* Softer shadows */
+    --shadow-soft: 0 4px 16px -4px hsl(215 30% 40% / 0.08);
+    --shadow-medium: 0 10px 30px -10px hsl(215 30% 40% / 0.12);
+    --shadow-strong: 0 18px 48px -12px hsl(215 30% 40% / 0.16);
+    --shadow-blue: 0 8px 24px -8px hsl(187 65% 54% / 0.18);
+
+    /* Motion */
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar (kept for components) */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 35% 18%;
+    --sidebar-primary: 215 65% 22%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 16% 96%;
+    --sidebar-accent-foreground: 215 35% 18%;
+    --sidebar-border: 210 16% 90%;
+    --sidebar-ring: 187 65% 54%;
+  }
+
+  .dark {
+    /* Dark mode disabled visually: mirror light theme values */
+    --background: var(--background);
+    --foreground: var(--foreground);
+    --card: var(--card);
+    --card-foreground: var(--card-foreground);
+    --popover: var(--popover);
+    --popover-foreground: var(--popover-foreground);
+    --primary: var(--primary);
+    --primary-foreground: var(--primary-foreground);
+    --primary-light: var(--primary-light);
+    --primary-lighter: var(--primary-lighter);
+    --secondary: var(--secondary);
+    --secondary-foreground: var(--secondary-foreground);
+    --secondary-blue: var(--secondary-blue);
+    --secondary-blue-light: var(--secondary-blue-light);
+    --muted: var(--muted);
+    --muted-foreground: var(--muted-foreground);
+    --muted-dark: var(--muted-dark);
+    --accent: var(--accent);
+    --accent-foreground: var(--accent-foreground);
+    --accent-blue: var(--accent-blue);
+    --accent-purple: var(--accent-purple);
+    --accent-pink: var(--accent-pink);
+    --accent-success: var(--accent-success);
+    --destructive: var(--destructive);
+    --destructive-foreground: var(--destructive-foreground);
+    --border: var(--border);
+    --input: var(--input);
+    --ring: var(--ring);
+    --sidebar-background: var(--sidebar-background);
+    --sidebar-foreground: var(--sidebar-foreground);
+    --sidebar-primary: var(--sidebar-primary);
+    --sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --sidebar-accent: var(--sidebar-accent);
+    --sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --sidebar-border: var(--sidebar-border);
+    --sidebar-ring: var(--sidebar-ring);
+    --shadow-soft: var(--shadow-soft);
+    --shadow-medium: var(--shadow-medium);
+    --shadow-strong: var(--shadow-strong);
+    --shadow-blue: var(--shadow-blue);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* Professional Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-secondary-blue text-primary-foreground;
+    @apply hover:shadow-blue transition-all duration-200;
+  }
+
+  .btn-outline-blue {
+    @apply border-2 border-secondary-blue text-secondary-blue bg-transparent;
+    @apply hover:bg-secondary-blue hover:text-white transition-colors duration-200;
+  }
+
+  /* Professional Cards */
+  .card-professional {
+    @apply bg-card border border-border rounded-lg shadow-soft;
+    @apply hover:shadow-medium transition-shadow duration-300;
+  }
+
+  .card-service {
+    @apply bg-card border border-border rounded-xl p-6 hover:shadow-medium;
+    @apply transition-all duration-200;
+  }
+
+  /* Professional Gradients */
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .bg-subtle-gradient {
+    background: var(--gradient-subtle);
+  }
+
+  /* Professional Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Tech Icons */
+  .tech-icon {
+    @apply w-12 h-12 p-3 rounded-lg bg-secondary-blue-light text-secondary-blue;
+    @apply transition-all duration-200;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
